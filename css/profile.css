@@ -1,0 +1,33 @@
+.dataChange {
+    height: 100%;
+    position:static;
+}
+
+.dataLabel {
+    margin-top: 15px;
+    font-family: Poppins-Medium;
+    font-size: 20px;
+    color: #333;
+    padding: 5px 0px;
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.dataInput {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid rgb(239, 239, 239);
+    text-align: center;
+    border-radius: 5px;
+    font-family: Poppins-Medium;
+}
+
+#submitDataButton {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 50px;
+}
