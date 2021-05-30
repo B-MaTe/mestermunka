@@ -1,8 +1,8 @@
 <?php
 if (isset($_SESSION['loginSucces'])) {
-  echo "<script>";
-  echo "document.location.replace('/');";
-  echo "</script>";
+  echo "<script>;
+  document.location.replace('/');
+   </script>";
 } else {
   $_SERVER['REQUEST_METHOD'] = "POST";
   if (isset($_POST["btn-ok"])) {
@@ -23,9 +23,10 @@ if (isset($_SESSION['loginSucces'])) {
                   ?>
                   <input hidden type="text" name="lastPage" id="lastPage" value="<?php echo $_SESSION['lastPage']; ?>">
                   <?php
-                    echo "<script>";
-                    echo "document.location.replace(document.getElementById('lastPage').value);";
-                    echo "</script>";
+                    echo "<script>
+                      document.location.replace(document.getElementById('lastPage').value)
+                      alert('Sikeres bejelentkezés!')
+                      </script>";
                   
                   }
                 } 

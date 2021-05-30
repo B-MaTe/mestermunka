@@ -12,6 +12,7 @@ if (mysqli_num_rows($productDB)) {
 			$desc = $itemRow->description;
 			$rating = $itemRow->rating;
 			$countOfRatings = $itemRow->countOfRatings;
+			$stock = $itemRow->stock;
 			if ($itemRow->discount && ($itemRow->discountTime == 0 || $itemRow->discountTime >= date("Y-m-d"))) {
 				$price = webshopNumberFormat($itemRow->discount) . " FT.-";
 				$DBprice = $itemRow->discount;
@@ -105,14 +106,37 @@ if (mysqli_num_rows($cartRes)) {
 						<span class="mtext-106 cl2">
                             <ins><?php echo $price; ?></ins> &nbsp; <del><?php echo $origPrice; ?></del>
 						</span>
-						<span class="fs-18 cl11 d-block m-t-10">
-							<?php 
-							for ($i = 0; $i < round($rating / $countOfRatings);$i++) {
-								echo '<i class="zmdi zmdi-star"></i>';
-							}
-							
-							?>
-						</span>
+						<span class="fs-18 cl11">
+													<?php 
+                                                    $csillag = 0;
+													for ($i = 0; $i < round($rating / $countOfRatings);$i++) {
+                                                        $csillag++;
+														echo '<i class="zmdi zmdi-star p-r-2"></i>';
+													}
+                                                    for ($i = 0; $i < 5 - $csillag; $i++) {
+                                                        echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+                                                    }
+													
+													?>
+     
+                                               
+									</span>
+                                    <?php echo ((int)$stock > 0) ? "<div style='color:white;
+                                                                                     background-color:green;
+                                                                                     border-radius:5px;
+                                                                                     font-weight:100;
+																					 position: absolute;
+                                                                                     font-family: Poppins-Regular;
+                                                                                    '>&nbspRaktáron&nbsp
+                                                                        </div>" 
+                                                                        : 
+                                                                        "<div style='color:white;
+                                                                                     background-color:red;
+                                                                                     border-radius:5px;
+                                                                                     font-weight:100;
+																					 position: absolute;
+                                                                                     font-family: Poppins-Regular;
+                                                                                     '>&nbspNincs Raktáron&nbsp</div>";  ?>
 
 						<form method="post">
 						<!--  -->
@@ -349,12 +373,17 @@ if (mysqli_num_rows($revRes)) {
 							</span>
 
 							<span class="fs-18 cl11">
-								<?php 
+							<?php 
+								$csillag = 0;
 								for ($i = 0; $i < $revRow->rating;$i++) {
-									echo '<i class="zmdi zmdi-star"></i>';
+									$csillag++;
+									echo '<i class="zmdi zmdi-star p-r-2"></i>';
+								}
+								for ($i = 0; $i < 5 - $csillag; $i++) {
+									echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
 								}
 								
-								?>
+							?>
 							</span>
 						</div>
 
@@ -429,12 +458,17 @@ if (mysqli_num_rows($relatedRes)) {
 									<ins><?php echo $price; ?></ins> &nbsp; &nbsp;  <del><?php echo $origPrice; ?></del>
 									</span>
 									<span class="fs-18 cl11">
-										<?php 
-										for ($i = 0; $i < round($relatedRow->rating / $relatedRow->countOfRatings);$i++) {
-											echo '<i class="zmdi zmdi-star"></i>';
-										}
-										
-										?>
+									<?php 
+                                                    $csillag = 0;
+													for ($i = 0; $i < round($relatedRow->rating / $relatedRow->countOfRatings);$i++) {
+                                                        $csillag++;
+														echo '<i class="zmdi zmdi-star p-r-2"></i>';
+													}
+                                                    for ($i = 0; $i < 5 - $csillag; $i++) {
+                                                        echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+                                                    }
+													
+													?>
 									</span>
 								</div>
 

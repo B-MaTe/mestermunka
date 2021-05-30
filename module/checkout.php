@@ -35,7 +35,7 @@ $orderRes = mysqli_query($link, $orderSelect);
 
 	<!-- Shoping Cart -->
 	
-	<form class="bg0 p-t-75 p-b-85" method='POST' autocomplete="off" id="sendOrder">
+	<div class="bg0 p-t-75 p-b-85">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 col-xl-14 m-lr-auto m-b-50">
@@ -244,6 +244,29 @@ if (mysqli_num_rows($checkoutRes)) {
 									Összesen:
 								</span>
 							</div>
+
+
+
+<div class="modal fade" id="sendOrderModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['placeOrder'])) {
 	$placeOrderSelect = "SELECT id,quantity,productID FROM cart WHERE userID = '$userID'";
@@ -257,25 +280,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['placeOrder'])) {
 			$sqlUpdate = mysqli_query($link, $updateProduct);
 			$deleteCart = "DELETE FROM cart WHERE id = $id";
 			$sqlDelete = mysqli_query($link, $deleteCart);
-		}
-		echo "<script>";
-		echo "document.location.replace('/');";
-		echo "</script>";
+		} 
 	}
+	echo "
+		<script>
+		alert('Sikeres vásárlás, köszönjük, hogy minket választott!');
+		document.location.replace('/');
+		</script>
+	";
+	
 }
-
 ?>
+
 							<div class="size-209 p-t-1">
 								<span class="mtext-110 cl2">
 									<?php echo webshopNumberFormat($overallPrice); ?> FT.-
 								</span>
 							</div>
 						</div>
-					<form>
+					<form method="post" id="placeOrder"> 
 						<input type="submit" name="placeOrder" value="Megrendelés" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
 					</form>
 					</div>
 				</div>
 			</div>
 		</div>
-	</form>
+	</div>
