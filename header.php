@@ -11,7 +11,9 @@ if (isset($_SESSION['userID'])) {
 	$userID = $_SESSION['userID'];
 /*
 	$URI = $_SERVER['REQUEST_URI'];
-	if(!empty($_POST) && $_SERVER['HTTP_REFERER'] != "http://local.mestermunka/kicsekkolas"){
+	if(!empty($_POST) && 
+	$_SERVER['HTTP_REFERER'] != "http://local.mestermunka/kicsekkolas" &&
+	$_SERVER['HTTP_REFERER'] != "http://local.mestermunka/profil"){
 		header("location:$URI");
 	} */
 	

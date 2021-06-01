@@ -80,7 +80,7 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="css/profile.css">
 <!--===============================================================================================-->
 </head>
-<body class="animsition">
+<body class="animsition" onresize="setScreenHWCookie()">
 <?php
 
 
@@ -103,6 +103,7 @@ function logoutFunction(){
 </script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 <script src="js/shop.js"></script>
 
 <!--===============================================================================================-->	
@@ -114,6 +115,13 @@ function logoutFunction(){
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
 	<script src="vendor/select2/select2.min.js"></script>
+	<script type=text/javascript>
+            function setScreenHWCookie() {
+                Cookies.set('sw',document.documentElement.clientWidth);
+                Cookies.set('sh',document.documentElement.clientHeight);
+                return true;
+            }
+    </script>
 	<script>
 		$(".js-select2").each(function(){
 			$(this).select2({

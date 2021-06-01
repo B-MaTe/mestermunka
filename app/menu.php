@@ -59,26 +59,32 @@
                     $_GET['q'] = '';
                 }
                 $style = "";
-                //var_dump($url);
+                
                 if (isset($_SESSION['loginSucces'])) {
                     if ($ID === 8) {
+                        if ($location === "main" && (int)$_COOKIE['sw'] > 991) {
                         $style = "padding-left:30px;border-left: 1px solid #b2b2b2;";
+                        } else {
+                            $style = "";
+                        }
                     } else if ($ID === 10) {
                         continue;
                     }
                 } else if (!isset($_SESSION['loginSucces'])) {
                     if ($ID === 10) {
-                        $style = "padding-left:30px;border-left: 1px solid #b2b2b2;";
+                        if ($location === "main" && (int)$_COOKIE['sw'] > 991) {
+                            $style = "padding-left:30px;border-left: 1px solid #b2b2b2;";
+                        } else {
+                            $style = "";
+                        }
+                       
                     } else if ($ID === 8) {
                         continue;
                     } else if ($ID === 12) {
                         continue;
                     } else if ($ID === 14) {
                         continue;
-                    } else if ($ID === 15) {
-                        continue;
-                    } 
-                    
+                    }
                 }
                 
     

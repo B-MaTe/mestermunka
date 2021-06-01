@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin felulet</title>
+
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style>
+        .counter {
+            color: red;
+            font-size: 35px;
+        }
+        [v-cloak] { display: none; }
+    </style>
+</head>
+<body>
+
+    
+
+
+
+    <div id="app" v-cloak>
+        <el-dialog title="Biztos?" :visible.sync="deleteConfirmVisible">
+            <span>Biztos törölni szeretnéd a <strong>{{product[this.deleteData.index].name}}</strong> munkát?</span>
+            <el-dialog
+                width="30%"
+                title="Törlés">
+            </el-dialog>
+            <div slot="footer" class="dialog-footer">
+              <el-button @click="remove(deleteData.id, deleteData.index)">Törlés</el-button>
+              <el-button type="primary" @click="deleteConfirmVisible = false">Mégsem</el-button>
+            </div>
+          </el-dialog>
+
+        <el-button type="success" @click="add()">Hozzáadás</el-button>
+        <el-table
+            :data="product"
+            style="width: 100%">
+        <el-table-column
+            prop="name"
+            label="Munka neve"
+            width="250">
+            <template slot-scope="scope">
+                <span v-if="editRow == scope.$index">
+                    <el-input 
+                        v-model="productData.name"
+                    ></el-input>
+                </span>
+                <span v-else>
+                    {{scope.row.name}}
+                </span>
+
+            </template>
+        </el-table-column>
+        <el-table-column
+            prop="description"
+            label="Leírás">
+            <template slot-scope="scope">
+                <span v-if="editRow == scope.$index">
+                    <el-input v-model="productData.description"></el-input>
+                </span>
+                <span v-else>
+                    {{scope.row.description}}
+                </span>
+
+            </template>
+        </el-table-column>
+        <el-table-column
+            prop="date"
+            label="Hozzáadás Dátuma"
+            width="250">
+            <template slot-scope="scope">
+                <span v-if="editRow == scope.$index">
+                    <el-input type="date" v-model="productData.date"></el-input>
+                </span>
+                <span v-else>
+                    {{scope.row.date}}
+                </span>
+            </template>
+        </el-table-column>
+    </el-table-column>
+    <el-table-column 
+        prop="file"
+        label="Kép">
+        <template slot-scope="scope">
+            <input type="file" @click="currID = scope.row.id" @change="previewFiles"  multiple>
+          </template>
+    </el-table-column>
+        <el-table-column>
+            <template slot-scope="scope">
+                <el-button
+                    type="primary"
+                    icon="el-icon-edit"
+                    size="mini"
+                    @click="edit(scope.$index, scope.row)"
+                    v-if="editRow != scope.$index"
+                    circle>
+                </el-button>
+                <el-button 
+                    type="danger" 
+                    icon="el-icon-close"
+                    size="mini"
+                    @click="removeConfirm(scope.row.id, scope.$index)"
+                    v-if="editRow != scope.$index"
+                    circle>
+                </el-button>
+                <el-button
+                    type="success" 
+                    size="mini"
+                    icon="el-icon-check"
+                    @click="save(scope.row.id, scope.$index)"
+                    v-if="editRow == scope.$index"
+                    circle>
+                </el-button>
+               
+                <el-button 
+                    type="danger" 
+                    size="mini"
+                    icon="el-icon-close" 
+                    @click="editRow = -1"
+                    v-if="editRow == scope.$index"
+                    circle>
+                </el-button>
+            </template>
+        
+        </el-table>
+
+        <el-table
+            :data="counter"
+            style="width: 10%; padding-top: 150px;">
+        <el-table-column
+            prop="num"
+            label="Látogatók száma">
+            
+            <template 
+                slot-scope="scope">
+                <div v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">
+                    <strong>{{scope.row.counter}}</strong>
+                </div>
+                
+            </template>
+            
+        </el-table-column>
+
+        </el-table>
+
+    </div>
+
+
+    
+
+    <!-- import Vue before Element -->
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <!-- import JavaScript -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="//unpkg.com/element-ui/lib/umd/locale/hu.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+    <script>
+    
+        ELEMENT.locale(ELEMENT.lang.hu);
+
+        var app = new Vue({
+            el: '#app',
+
+            data: {
+                activeColor: 'red',
+                fontSize: 26,
+                counter: [],
+                product: [],
+                editRow: -1,
+                productData: {
+                    name : '',
+                    description : '',
+                    date : '',
+                    id : 0,                   
+                },
+                deleteConfirmVisible : false,
+                deleteData: {
+                    id: 0,
+                    index: 0,
+                },
+                currID : 0,
+            },
+
+            mounted: function() {
+
+                this.loadTableData();
+                this.loadCounter();
+            },
+
+            methods: {
+                loadTableData() {
+                    axios
+                        .get("tableData.php")
+                        .then(function(response) {
+                            this.product = response.data;
+                        }.bind(this));
+                },
+
+                loadCounter() {
+                    axios
+                        .get("visitorCounter.php")
+                        .then(function(response) {
+                            this.counter = response.data;
+                        }.bind(this));
+                },
+
+                add() {
+                    var utc = new Date().toJSON().slice(0,10).replace(/-/g,'-');
+                    let row = {
+                        name: 'Munka neve',
+                        description: 'Munka leírása',
+                        date: utc,
+                        id: 0,
+                    };
+                    
+                    this.product.push(row);
+
+                    this.edit(this.product.length-1,row);
+                },
+
+                edit(index, row) {
+                    this.productData = {
+                        name: row.name,
+                        description: row.description,
+                        date: row.date,
+                        id: row.id,
+                    }
+
+                    this.editRow = index;
+                },
+
+                save(id, index) {
+                    axios({
+                        method: 'POST',
+                        url: 'tableSave.php',
+                        data: this.toFormData(this.productData),
+                    }).then(function(response) {
+                            if (response.data.res == 'ok') {
+                                this.product[index] = response.data.row;
+                                this.editRow = -1;
+                            }
+                        }.bind(this).bind(index));
+                },
+
+
+                removeConfirm(id, index) {
+                    
+                    this.deleteData.id = id;
+                    this.deleteData.index = index;
+                    this.deleteConfirmVisible = true;
+                    
+                },
+
+
+                remove(id, index) {
+                    this.deleteConfirmVisible = false;
+                    axios({
+                        method: 'POST',
+                        url: 'tableDelete.php',
+                        data: this.toFormData({
+                            id: id,
+                        }),
+                    }).then(function(response) {
+                            console.log(response);
+                            if (response.data.res == 'ok') {
+                                this.product.splice(index, 1);
+                            }
+                        }.bind(this).bind(index));
+                },
+
+                previewFiles(event) {
+                    axios({
+                        method: 'POST',
+                        url: 'addPics.php',
+                        data: this.toFormData({
+                            id: this.currID,
+                            file: event.target.files[0]
+                        }),
+                    }).then(function(response) {
+                            console.log(response);
+                            if (response.data.res == 'ok') {
+                            }
+                        }.bind(this).bind(index));
+                },
+
+                updatePicName(id, name) {
+                    axios({
+                        method: 'POST',
+                        url: 'updatePics.php',
+                        data: this.toFormData({
+                            id: id,
+                            name: name,
+                            oldname: oldname,
+                        }),
+                    })
+                },
+
+                toFormData: function(obj) {
+                    let formData = new FormData();
+                    for(let key in obj) {
+                        formData.append(key, obj[key]);
+                    }
+                    return formData;
+                },
+            },
+
+
+        });
+    </script>
+</body>
+
+    
+</html>

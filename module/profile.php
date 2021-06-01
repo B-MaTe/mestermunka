@@ -94,6 +94,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitDataButton'])) {
 						optional='$optionalD'
 						WHERE userID ='$id'";
 	mysqli_query($link, $changeDataUpdate);
+	echo 	"<script>
+			alert('A kívánt adatok sikeresen megváltoztak.');
+			</script>";
 }
 ?>
 
@@ -128,16 +131,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['passVerify'])) {
 			if (!password_verify($passvrfy['old'], $newPassword)) {
 				$pswUpdate = "UPDATE login SET password='$newPassword' WHERE userID = '$id'";
 				mysqli_query($link, $pswUpdate);
+				echo 	"<script>
+							alert('Sikeres jelszó megváltoztatás!');
+						</script>";
 			} else {
-				// ugyanazok
+				echo 	"<script>
+							alert('Az új jelszó nem lehet ugyanaz, mint a régi!');
+						</script>";
 			}
 			
 		} else {
-			// nem ugyanaz a ket uj jelszo
+			echo 	"<script>
+						alert('Az új jelszavak nem egyeznek!');
+					</script>";
 		}
 	} else {
-		// regi jelszo nem jo
+		echo 	"<script>
+					alert('Hibás régi jelszó!');
+				</script>";
 	}
 }
-
 ?>

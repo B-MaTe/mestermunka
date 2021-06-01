@@ -201,20 +201,18 @@ if (mysqli_num_rows($bestSellerRes)) {
 												<ins><?php echo $price; ?></ins> &nbsp; &nbsp;  <del><?php echo $origPrice; ?></del>
 												</span>
 												<span class="fs-18 cl11">
-													<?php 
+												<?php 
+                                                    $csillag = 0;
 													for ($i = 0; $i < round($bestSellerRow->rating / $bestSellerRow->countOfRatings);$i++) {
-														echo '<i class="zmdi zmdi-star"></i>';
+                                                        $csillag++;
+														echo '<i class="zmdi zmdi-star p-r-2"></i>';
 													}
+                                                    for ($i = 0; $i < 5 - $csillag; $i++) {
+                                                        echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+                                                    }
 													
 													?>
 												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-												</a>
 											</div>
 										</div>
 									</div>
@@ -269,20 +267,18 @@ if (mysqli_num_rows($saleRes)) {
 												<ins><?php echo $price; ?></ins> &nbsp; &nbsp;  <del><?php echo $origPrice; ?></del>
 												</span>
 												<span class="fs-18 cl11">
-													<?php 
+												<?php 
+                                                    $csillag = 0;
 													for ($i = 0; $i < round($saleRow->rating / $saleRow->countOfRatings);$i++) {
-														echo '<i class="zmdi zmdi-star"></i>';
+                                                        $csillag++;
+														echo '<i class="zmdi zmdi-star p-r-2"></i>';
 													}
+                                                    for ($i = 0; $i < 5 - $csillag; $i++) {
+                                                        echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+                                                    }
 													
 													?>
 												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-												</a>
 											</div>
 										</div>
 									</div>
@@ -338,20 +334,18 @@ if (mysqli_num_rows($saleRes)) {
 
 												</span>
 												<span class="fs-18 cl11">
-													<?php 
+												<?php 
+                                                    $csillag = 0;
 													for ($i = 0; $i < round($ratingRow->rating / $ratingRow->countOfRatings);$i++) {
-														echo '<i class="zmdi zmdi-star"></i>';
+                                                        $csillag++;
+														echo '<i class="zmdi zmdi-star p-r-2"></i>';
 													}
+                                                    for ($i = 0; $i < 5 - $csillag; $i++) {
+                                                        echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+                                                    }
 													
 													?>
 												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="/items?id=<?php echo $ratingRow->id; ?>" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-												</a>
 											</div>
 										</div>
 									</div>

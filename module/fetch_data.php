@@ -108,36 +108,8 @@ if (mysqli_num_rows($res)) {
                                                                                      font-weight:100;
                                                                                      font-family: Poppins-Regular;
                                                                                      '>&nbspNincs Raktáron&nbsp</div>";  ?>
-<?php
-// NOT WORKING YET!!!
-//     |
-//     |
-//     V
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['whishlistID'])) {
-    echo "NICE";
-    if (!isset($_SESSION['loginSucces'])) {
-        echo "<script>
-            alert('A kívánságlistához adáshoz jelentkezzen be!');
-            document.location.replace('/bejelentkezes');
-            </script>";
-    } else {
-        $userID = $_SESSION['userID'];
-        $whInsert = "INSERT INTO whishlist (userID,productID,name,sku,price) VALUES ('$userID', '$id', '$row->name', '$row->sku', '$price')";
-        $sql = mysqli_query($link, $whInsert);
-        echo $sql;
-    }
-    
-}
-?>
+
                                 </div>
-                                <form method="post" id="whishlistID">
-                                    <div class="block2-txt-child2 flex-r p-t-3">
-                                        <button id="whishlistID" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                            <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png" alt="ICON">
-                                            <img class="icon-heart2 dis-block trans-04 ab-t-l" src="images/icons/icon-heart-02.png" alt="ICON">
-                                        </button>
-                                    </div>
-                                </form>
                             </div>
                         </div>
                     </div>

@@ -1,0 +1,6 @@
+AuthGroupFile /dev/null
+AuthType Basic
+AuthUserFile C:\xampp\htdocs\balazsmate\mestermunka\admin\.htpasswd
+AuthName "Védett könyvtár"
+require valid-user
+ErrorDocument 401 "Unauthorized Access"
