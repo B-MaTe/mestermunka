@@ -9,13 +9,13 @@ if (isset($_SERVER['HTTP_REFERER']) &&
 }
 if (isset($_SESSION['userID'])) {
 	$userID = $_SESSION['userID'];
-/*
+
 	$URI = $_SERVER['REQUEST_URI'];
 	if(!empty($_POST) && 
 	$_SERVER['HTTP_REFERER'] != "http://local.mestermunka/kicsekkolas" &&
 	$_SERVER['HTTP_REFERER'] != "http://local.mestermunka/profil"){
 		header("location:$URI");
-	} */
+	} 
 	
 	$cartQuantity = 0;
 	$cartQuantitySelect = "SELECT * FROM cart WHERE userID = ('$userID')";

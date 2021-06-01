@@ -36,6 +36,7 @@ session_start();
 	include("app/db.php");
 	include("app/menu.php");
 	include("app/function.php");
+	include_once("counter.php");
 	
 ?>
 

@@ -4,11 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin felulet</title>
+    <title>Admin</title>
+
+
+    <!-- import Vue before Element -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <!-- import JavaScript -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="//unpkg.com/element-ui/lib/umd/locale/hu.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 
     <!-- import CSS -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
     <style>
+        #id {
+            overflow-x:scroll;
+        }
+        *{
+            white-space:pre-line;
+        }
         .counter {
             color: red;
             font-size: 35px;
@@ -24,7 +41,7 @@
 
     <div id="app" v-cloak>
         <el-dialog title="Biztos?" :visible.sync="deleteConfirmVisible">
-            <span>Biztos törölni szeretnéd a <strong>{{product[this.deleteData.index].name}}</strong> munkát?</span>
+            <span>Biztos törölni szeretnéd a <strong>{{product[this.deleteData.index].name}}</strong> terméket?</span>
             <el-dialog
                 width="30%"
                 title="Törlés">
@@ -41,8 +58,8 @@
             style="width: 100%">
         <el-table-column
             prop="name"
-            label="Munka neve"
-            width="250">
+            label="Termék neve"
+            width="150">
             <template slot-scope="scope">
                 <span v-if="editRow == scope.$index">
                     <el-input 
@@ -56,11 +73,90 @@
             </template>
         </el-table-column>
         <el-table-column
-            prop="description"
-            label="Leírás">
+            prop="price"
+            label="Ár">
             <template slot-scope="scope">
                 <span v-if="editRow == scope.$index">
-                    <el-input v-model="productData.description"></el-input>
+                    <el-input v-model="productData.price"></el-input>
+                </span>
+                <span v-else>
+                    {{scope.row.price}}
+                </span>
+
+            </template>
+        </el-table-column>
+        <el-table-column
+            prop="discount"
+            label="Akció">
+            <template slot-scope="scope">
+                <span v-if="editRow == scope.$index">
+                    <el-input v-model="productData.discount"></el-input>
+                </span>
+                <span v-else>
+                    {{scope.row.discount}}
+                </span>
+
+            </template>
+        </el-table-column>
+        <el-table-column
+            prop="discountTime"
+            label="Akció lejárási dátum">
+            <template slot-scope="scope">
+                <span v-if="editRow == scope.$index">
+                    <el-input v-model="productData.discountTime"></el-input>
+                </span>
+                <span v-else>
+                    {{scope.row.discountTime}}
+                </span>
+
+            </template>
+        </el-table-column>
+        <el-table-column
+            prop="category"
+            label="Kategória">
+            <template slot-scope="scope">
+                <span v-if="editRow == scope.$index">
+                    <el-input v-model="productData.category"></el-input>
+                </span>
+                <span v-else>
+                    {{scope.row.category}}
+                </span>
+
+            </template>
+        </el-table-column>
+        <el-table-column
+            prop="color"
+            label="Szín">
+            <template slot-scope="scope">
+                <span v-if="editRow == scope.$index">
+                    <el-input v-model="productData.color"></el-input>
+                </span>
+                <span v-else>
+                    {{scope.row.color}}
+                </span>
+
+            </template>
+        </el-table-column>
+        <el-table-column
+            prop="size"
+            label="Méret">
+            <template slot-scope="scope">
+                <span v-if="editRow == scope.$index">
+                    <el-input v-model="productData.size"></el-input>
+                </span>
+                <span v-else>
+                    {{scope.row.size}}
+                </span>
+
+            </template>
+        </el-table-column>
+        <el-table-column
+            prop="description"
+            label="Leírás"
+            width="400">
+            <template slot-scope="scope">
+                <span v-if="editRow == scope.$index">
+                    <el-input type="text" v-model="productData.description"></el-input>
                 </span>
                 <span v-else>
                     {{scope.row.description}}
@@ -69,22 +165,50 @@
             </template>
         </el-table-column>
         <el-table-column
-            prop="date"
-            label="Hozzáadás Dátuma"
-            width="250">
+            prop="product_status"
+            label="Státusz"
+            width="70">
             <template slot-scope="scope">
                 <span v-if="editRow == scope.$index">
-                    <el-input type="date" v-model="productData.date"></el-input>
+                    <el-input type="text" v-model="productData.product_status"></el-input>
                 </span>
                 <span v-else>
-                    {{scope.row.date}}
+                    {{scope.row.product_status}}
+                </span>
+
+            </template>
+        </el-table-column>
+        <el-table-column
+            prop="sold"
+            label="Eladva"
+            width="70">
+            <template slot-scope="scope">
+                <span v-if="editRow == scope.$index">
+                    <el-input type="text" v-model="productData.sold"></el-input>
+                </span>
+                <span v-else>
+                    {{scope.row.sold}}
+                </span>
+            </template>
+        </el-table-column>
+        <el-table-column
+            prop="stock"
+            label="Raktáron"
+            width="78">
+            <template slot-scope="scope">
+                <span v-if="editRow == scope.$index">
+                    <el-input type="text" v-model="productData.stock"></el-input>
+                </span>
+                <span v-else>
+                    {{scope.row.stock}}
                 </span>
             </template>
         </el-table-column>
     </el-table-column>
     <el-table-column 
         prop="file"
-        label="Kép">
+        label="Kép"
+        width="250">
         <template slot-scope="scope">
             <input type="file" @click="currID = scope.row.id" @change="previewFiles"  multiple>
           </template>
@@ -152,14 +276,7 @@
 
     
 
-    <!-- import Vue before Element -->
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <!-- import JavaScript -->
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-    <script src="//unpkg.com/element-ui/lib/umd/locale/hu.js"></script>
-
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
+    
 
     <script>
     
@@ -169,16 +286,22 @@
             el: '#app',
 
             data: {
+                editRow: -1,
                 activeColor: 'red',
                 fontSize: 26,
                 counter: [],
                 product: [],
-                editRow: -1,
                 productData: {
-                    name : '',
-                    description : '',
-                    date : '',
-                    id : 0,                   
+                    name: '',
+                        price: '',
+                        discount: '',
+                        discountTime: '',
+                        category: '',
+                        color: '',
+                        size: '',
+                        description: '',
+                        stock: '',
+                        id: 0,               
                 },
                 deleteConfirmVisible : false,
                 deleteData: {
@@ -189,7 +312,7 @@
             },
 
             mounted: function() {
-
+                
                 this.loadTableData();
                 this.loadCounter();
             },
@@ -212,11 +335,18 @@
                 },
 
                 add() {
-                    var utc = new Date().toJSON().slice(0,10).replace(/-/g,'-');
                     let row = {
-                        name: 'Munka neve',
-                        description: 'Munka leírása',
-                        date: utc,
+                        name: 'Termék',
+                        price: 'Ár',
+                        discount: 'Akció',
+                        discountTime: 'Akció lejárási dátum (ÉÉÉÉ-HH-NN) ',
+                        category: 'Kategória',
+                        color: 'Szín',
+                        size: 'Méret',
+                        description: 'Leírás',
+                        product_status: 1,
+                        sold: 0,
+                        stock: 'Raktáron',
                         id: 0,
                     };
                     
@@ -228,11 +358,18 @@
                 edit(index, row) {
                     this.productData = {
                         name: row.name,
+                        price: row.price,
+                        discount: row.discount,
+                        discountTime: row.discountTime,
+                        category: row.category,
+                        color: row.color,
+                        size: row.size,
                         description: row.description,
-                        date: row.date,
+                        product_status: row.product_status,
+                        sold: row.sold,
+                        stock: row.stock,
                         id: row.id,
                     }
-
                     this.editRow = index;
                 },
 

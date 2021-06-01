@@ -4,7 +4,7 @@
         include("../app/ini.php");
         include("../app/db.php");
         
-        $deleteSelect = "SELECT * FROM munkaink WHERE id = " . $_POST['id'];
+        $deleteSelect = "SELECT * FROM product WHERE id = " . $_POST['id'];
         $delRes = mysqli_query($link, $deleteSelect);
 
         if (mysqli_num_rows($delRes)) {
@@ -14,7 +14,7 @@
             unlink("../assets/img/munkaink/" . $sku . ".jpg");
         }
 
-        $delete = "DELETE FROM munkaink WHERE id = " . $_POST['id'];
+        $delete = "DELETE FROM product WHERE id = " . $_POST['id'];
         $res = mysqli_query($link, $delete);
 
 

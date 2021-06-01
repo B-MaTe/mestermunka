@@ -76,7 +76,7 @@ $resShopProduct = DBproduct($link);
         <?php
         
 
-        $categorySelect = "SELECT DISTINCT category FROM product WHERE product_status = '1' ORDER BY `order` ASC";
+        $categorySelect = "SELECT DISTINCT category FROM product WHERE product_status = '1' ORDER BY `id` ASC";
         $categoryRes = mysqli_query($link,$categorySelect);
         if (mysqli_num_rows($categoryRes)) {
             while ($row = mysqli_fetch_object($categoryRes)) {
@@ -163,7 +163,7 @@ if (mysqli_num_rows($lowestRes)) {
 
             <?php
 
-            $colorSelect = "SELECT DISTINCT (color) FROM product WHERE product_status = '1' ORDER BY `order` ASC";
+            $colorSelect = "SELECT DISTINCT (color) FROM product WHERE product_status = '1' ORDER BY `id` ASC";
             $colorRes = mysqli_query($link,$colorSelect);
             if (mysqli_num_rows($colorRes)) {
                 $colorList = [];
