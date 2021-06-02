@@ -13,6 +13,7 @@ if (mysqli_num_rows($productDB)) {
 			$rating = $itemRow->rating;
 			$countOfRatings = $itemRow->countOfRatings;
 			$stock = $itemRow->stock;
+			$numOfPictures = $itemRow->pictures;
 			if ($itemRow->discount && ($itemRow->discountTime == 0 || $itemRow->discountTime >= date("Y-m-d"))) {
 				$price = webshopNumberFormat($itemRow->discount) . " FT.-";
 				$DBprice = $itemRow->discount;
@@ -83,15 +84,25 @@ if (mysqli_num_rows($cartRes)) {
 							<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
 							<div class="slick3 gallery-lb">
-								<div class="item-slick3" data-thumb="images/product<?php echo $singleItemID; ?>.jpg">
+								<?php
+								
+								for ($i = 1; $i < (int)$numOfPictures+1; $i++) {
+								
+								?>
+								<div class="item-slick3" data-thumb="images/<?php echo $sku; ?>/product<?php echo $i; ?>.jpg">
 									<div class="wrap-pic-w pos-relative">
-										<img src="images/product<?php echo $singleItemID; ?>.jpg" alt="IMG-PRODUCT">
-
-										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product<?php echo $singleItemID; ?>.jpg">
+										
+										<img src="images/<?php echo $sku; ?>/product<?php echo $i; ?>.jpg">
+										<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/<?php echo $sku; ?>/product<?php echo $i; ?>.jpg">
 											<i class="fa fa-expand"></i>
 										</a>
 									</div>
 								</div>
+
+								<?php
+								}
+								?>
+
 							</div>
 						</div>
 					</div>
@@ -184,7 +195,7 @@ if (mysqli_num_rows($cartRes)) {
 										if (mysqli_num_rows($productDB)) {
 											while($colorRow = mysqli_fetch_object($productDB)) {
 												for ($i = 0; $i < count($color = explode(',', $colorRow->color)); $i++) {
-													$currColor = strtoupper($color[$i]);
+													$currColor = getRealColor($color[$i]);
 													echo "<option value='$currColor'>$currColor</option>";
 												}
 											}
@@ -425,7 +436,7 @@ if (mysqli_num_rows($revRes)) {
 				<div class="slick2">
 <?php
 
-$relatedSelect = "SELECT * FROM product WHERE category = ('$category') LIMIT 5";
+$relatedSelect = "SELECT * FROM product WHERE category = ('$category') AND id != $singleItemID LIMIT 5";
 $relatedRes = mysqli_query($link, $relatedSelect);
 if (mysqli_num_rows($relatedRes)) {
 	while ($relatedRow = mysqli_fetch_object($relatedRes)) {
@@ -441,7 +452,7 @@ if (mysqli_num_rows($relatedRes)) {
 						<!-- Block2 -->
 						<div class="block2">
 							<div class="block2-pic hov-img0">
-								<img src="images/<?php echo $relatedRow->pictures; ?>" alt="IMG-PRODUCT">
+								<img src="images/<?php echo $relatedRow->sku; ?>/product1.jpg" alt="IMG-PRODUCT">
 
 								<a href="/item?id=<?php echo $relatedRow->id; ?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
 									Részletek
@@ -459,6 +470,7 @@ if (mysqli_num_rows($relatedRes)) {
 									</span>
 									<span class="fs-18 cl11">
 									<?php 
+									 				if ((int)$relatedRow->countOfRatings > 0) {
                                                     $csillag = 0;
 													for ($i = 0; $i < round($relatedRow->rating / $relatedRow->countOfRatings);$i++) {
                                                         $csillag++;
@@ -467,7 +479,13 @@ if (mysqli_num_rows($relatedRes)) {
                                                     for ($i = 0; $i < 5 - $csillag; $i++) {
                                                         echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
                                                     }
-													
+												} else {
+													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+												}
 													?>
 									</span>
 								</div>

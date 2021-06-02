@@ -63,7 +63,7 @@ if (mysqli_num_rows($res)) {
                         <div class="block2">
                             <div class="block2-pic hov-img0">
     
-                                <img src="images/product<?php echo $id; ?>.jpg" alt="IMG-PRODUCT">
+                                <img src="images/<?php echo $row->sku; ?>/product1.jpg" alt="IMG-PRODUCT">
                                 
                                 <a href="/item?id=<?php echo $id ?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
                                     Részletek
@@ -81,15 +81,24 @@ if (mysqli_num_rows($res)) {
                                     </span>
                                     <span class="fs-18 cl11">
 													<?php 
-                                                    $csillag = 0;
-													for ($i = 0; $i < round($row->rating / $row->countOfRatings);$i++) {
-                                                        $csillag++;
-														echo '<i class="zmdi zmdi-star p-r-2"></i>';
-													}
-                                                    for ($i = 0; $i < 5 - $csillag; $i++) {
+                                                    if ((int)$row->countOfRatings > 0) {
+                                                        $csillag = 0;
+                                                        for ($i = 0; $i < round($row->rating / $row->countOfRatings);$i++) {
+                                                            $csillag++;
+                                                            echo '<i class="zmdi zmdi-star p-r-2"></i>';
+                                                        }
+                                                        for ($i = 0; $i < 5 - $csillag; $i++) {
+                                                            echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+                                                        }
+                                                        
+                                                    } else {
+                                                        echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+                                                        echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+                                                        echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+                                                        echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
                                                         echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
                                                     }
-													
+                                                    
 													?>
      
                                                

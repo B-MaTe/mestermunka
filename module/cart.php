@@ -68,7 +68,7 @@ $cartRes = mysqli_query($link, $cartSelect);
 								<tr class="table_row">
 									<td class="column-1">
 										<div class="how-itemcart1" onclick="document.location.replace('/kosar?deleteid=<?php echo $id ?>')">
-											<img src="images/product<?php echo $productID; ?>.jpg" alt="IMG">
+											<img src="images/<?php echo $sku; ?>/product1.jpg" alt="IMG">
 										</div>
 									</td>
 									<td class="column-3"><a href="/item?id=<?php echo $productID; ?>"><?php echo $name; ?></a></td>

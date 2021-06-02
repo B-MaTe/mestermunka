@@ -26,6 +26,9 @@
         *{
             white-space:pre-line;
         }
+        .desc {
+            overflow-x:scroll;
+        }
         .counter {
             color: red;
             font-size: 35px;
@@ -55,7 +58,7 @@
         <el-button type="success" @click="add()">Hozzáadás</el-button>
         <el-table
             :data="product"
-            style="width: 100%">
+            style="width: 100%;">
         <el-table-column
             prop="name"
             label="Termék neve"
@@ -153,15 +156,16 @@
         <el-table-column
             prop="description"
             label="Leírás"
-            width="400">
+            width="300">
             <template slot-scope="scope">
-                <span v-if="editRow == scope.$index">
-                    <el-input type="text" v-model="productData.description"></el-input>
-                </span>
-                <span v-else>
-                    {{scope.row.description}}
-                </span>
-
+                <div style="overflow-y:scroll;max-height: 150px;">
+                    <span v-if="editRow == scope.$index">
+                        <el-input type="text" v-model="productData.description"></el-input>
+                    </span>
+                    <span v-else>
+                        {{scope.row.description}}
+                    </span>
+                </div>
             </template>
         </el-table-column>
         <el-table-column
@@ -208,9 +212,9 @@
     <el-table-column 
         prop="file"
         label="Kép"
-        width="250">
+        width="107">
         <template slot-scope="scope">
-            <input type="file" @click="currID = scope.row.id" @change="previewFiles"  multiple>
+            <input type="file" @click="currID = scope.row.id" @change="previewFiles" multiple>
           </template>
     </el-table-column>
         <el-table-column>
@@ -300,6 +304,7 @@
                         color: '',
                         size: '',
                         description: '',
+                        product_status: '',
                         stock: '',
                         id: 0,               
                 },
@@ -417,6 +422,9 @@
                         method: 'POST',
                         url: 'addPics.php',
                         data: this.toFormData({
+                            headers: {
+                            'Content-Type': 'multipart/form-data'
+                            },
                             id: this.currID,
                             file: event.target.files[0]
                         }),

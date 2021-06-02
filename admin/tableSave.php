@@ -11,7 +11,7 @@
 
         return strtolower(str_replace($from,$to,$name));
     }
-
+    //var_dump($_POST);
     if (isset($_POST['id'])) {
         $id = $_POST['id'];
         $name = $_POST['name'];
@@ -23,7 +23,7 @@
         $discount = $_POST['discount'];
         $discountTime = $_POST['discountTime'];
         $desc = $_POST['description'];
-        $pictures = $_POST['pictures'];
+        $product_status = $_POST['product_status'];
         $stock = $_POST['stock'];
 
         if ($id == 0) {
@@ -65,7 +65,7 @@
 
             $id = mysqli_insert_id($link);
         } else {
-            $update = "UPDATE product SET   name='" . $name . "',
+            $update = "UPDATE product SET name='" . $name . "',
                                             sku='" . $sku . "',
                                             price='" . $price . "',
                                             category='" . $category . "',
@@ -73,9 +73,9 @@
                                             size='" . $size . "',
                                             discount='" . $discount . "',
                                             discountTime='" . $discountTime . "',
-                                             description='" . $desc . "',
-                                             pictures='" . $pictures . "',
-                                              stock='" . $stock . "'
+                                            description='" . $desc . "',
+                                            product_status ='" . $product_status . "',
+                                            stock='" . $stock . "'
                      WHERE id=" . $id;
 
             $res = mysqli_query($link, $update);

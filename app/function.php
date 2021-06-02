@@ -67,6 +67,8 @@
 
     function getRealColor($color) {
         $colorArray = [
+            'pink' => 'Rózsaszín',
+            'brown' => 'Barna',
             'black' => 'Fekete',
             'white' => 'Fehér',
             'yellow' => 'Sárga',
@@ -78,3 +80,4 @@
         ];
     return $colorArray[$color];
 }
+

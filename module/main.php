@@ -184,7 +184,7 @@ if (mysqli_num_rows($bestSellerRes)) {
 									<!-- Block2 -->
 									<div class="block2">
 										<div class="block2-pic hov-img0">
-											<img src="images/<?php echo $bestSellerRow->pictures; ?>" alt="IMG-PRODUCT">
+											<img src="images/<?php echo $bestSellerRow->sku; ?>/product1.jpg" alt="IMG-PRODUCT">
 
 											<a href="/item?id=<?php echo $bestSellerRow->id; ?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
 												Részletek
@@ -202,6 +202,7 @@ if (mysqli_num_rows($bestSellerRes)) {
 												</span>
 												<span class="fs-18 cl11">
 												<?php 
+												if ((int)$bestSellerRow->countOfRatings > 0) {
                                                     $csillag = 0;
 													for ($i = 0; $i < round($bestSellerRow->rating / $bestSellerRow->countOfRatings);$i++) {
                                                         $csillag++;
@@ -210,7 +211,13 @@ if (mysqli_num_rows($bestSellerRes)) {
                                                     for ($i = 0; $i < 5 - $csillag; $i++) {
                                                         echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
                                                     }
-													
+												} else {
+													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+												}
 													?>
 												</span>
 											</div>
@@ -250,7 +257,7 @@ if (mysqli_num_rows($saleRes)) {
 									<!-- Block2 -->
 									<div class="block2">
 										<div class="block2-pic hov-img0">
-											<img src="images/<?php echo $saleRow->pictures; ?>" alt="IMG-PRODUCT">
+										<img src="images/<?php echo $saleRow->sku; ?>/product1.jpg" alt="IMG-PRODUCT">
 
 											<a href="/item?id=<?php echo $saleRow->id; ?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
 												Részletek
@@ -268,6 +275,7 @@ if (mysqli_num_rows($saleRes)) {
 												</span>
 												<span class="fs-18 cl11">
 												<?php 
+												if ((int)$saleRow->countOfRatings > 0) {
                                                     $csillag = 0;
 													for ($i = 0; $i < round($saleRow->rating / $saleRow->countOfRatings);$i++) {
                                                         $csillag++;
@@ -276,7 +284,13 @@ if (mysqli_num_rows($saleRes)) {
                                                     for ($i = 0; $i < 5 - $csillag; $i++) {
                                                         echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
                                                     }
-													
+												} else {
+													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+												}
 													?>
 												</span>
 											</div>
@@ -315,7 +329,7 @@ if (mysqli_num_rows($saleRes)) {
 									<!-- Block2 -->
 									<div class="block2">
 										<div class="block2-pic hov-img0">
-											<img src="images/<?php echo $ratingRow->pictures; ?>" alt="IMG-PRODUCT">
+										<img src="images/<?php echo $ratingRow->sku; ?>/product1.jpg" alt="IMG-PRODUCT">
 
 											<a href="<?php echo $ratingRow->id; ?>" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
 												Részletek
@@ -335,6 +349,7 @@ if (mysqli_num_rows($saleRes)) {
 												</span>
 												<span class="fs-18 cl11">
 												<?php 
+													if ((int)$ratingRow->countOfRatings > 0) {
                                                     $csillag = 0;
 													for ($i = 0; $i < round($ratingRow->rating / $ratingRow->countOfRatings);$i++) {
                                                         $csillag++;
@@ -343,7 +358,13 @@ if (mysqli_num_rows($saleRes)) {
                                                     for ($i = 0; $i < 5 - $csillag; $i++) {
                                                         echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
                                                     }
-													
+												} else {
+													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+												}
 													?>
 												</span>
 											</div>
