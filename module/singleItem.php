@@ -110,45 +110,49 @@ if (mysqli_num_rows($cartRes)) {
 					
 				<div class="col-md-6 col-lg-5 p-b-30">
 					<div class="p-r-50 p-t-5 p-lr-0-lg">
-						<h4 class="mtext-105 cl2 js-name-detail p-b-14">
-                            <?php echo $name; ?>
-						</h4>
+						<div style="display:flex;flex-direction:column">
+							<h4 class="mtext-105 cl2 js-name-detail p-b-14">
+								<?php echo $name; ?>
+							</h4>
 
-						<span class="mtext-106 cl2">
-                            <ins><?php echo $price; ?></ins> &nbsp; <del><?php echo $origPrice; ?></del>
-						</span>
-						<span class="fs-18 cl11">
-													<?php 
-                                                    $csillag = 0;
-													for ($i = 0; $i < round($rating / $countOfRatings);$i++) {
-                                                        $csillag++;
-														echo '<i class="zmdi zmdi-star p-r-2"></i>';
-													}
-                                                    for ($i = 0; $i < 5 - $csillag; $i++) {
-                                                        echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
-                                                    }
-													
-													?>
-     
-                                               
-									</span>
-                                    <?php echo ((int)$stock > 0) ? "<div style='color:white;
-                                                                                     background-color:green;
-                                                                                     border-radius:5px;
-                                                                                     font-weight:100;
-																					 position: absolute;
-                                                                                     font-family: Poppins-Regular;
-                                                                                    '>&nbspRaktáron&nbsp
-                                                                        </div>" 
-                                                                        : 
-                                                                        "<div style='color:white;
-                                                                                     background-color:red;
-                                                                                     border-radius:5px;
-                                                                                     font-weight:100;
-																					 position: absolute;
-                                                                                     font-family: Poppins-Regular;
-                                                                                     '>&nbspNincs Raktáron&nbsp</div>";  ?>
-
+							<span class="mtext-106 cl2">
+								<ins><?php echo $price; ?></ins> &nbsp; <del><?php echo $origPrice; ?></del>
+							</span>
+							<span class="fs-18 cl11">
+														<?php 
+														$csillag = 0;
+														for ($i = 0; $i < round($rating / $countOfRatings);$i++) {
+															$csillag++;
+															echo '<i class="zmdi zmdi-star p-r-2"></i>';
+														}
+														for ($i = 0; $i < 5 - $csillag; $i++) {
+															echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+														}
+														
+														?>
+		
+												
+										</span>
+										<span>
+											<?php echo ((int)$stock > 0) ? "<div style='color:white;
+																						background-color:green;
+																						border-radius:5px;
+																						font-weight:100;
+																						position: absolute;
+																						font-family: Poppins-Regular;
+																						'>&nbspRaktáron&nbsp
+																			</div>" 
+																			: 
+																			"<div style='color:white;
+																						background-color:red;
+																						border-radius:5px;
+																						font-weight:100;
+																						position: absolute;
+																						font-family: Poppins-Regular;
+																						'>&nbspNincs Raktáron&nbsp</div>";  
+											?>
+											</span>
+						</div>
 						<form method="post">
 						<!--  -->
 						<div class="p-t-33">
@@ -458,7 +462,7 @@ if (mysqli_num_rows($relatedRes)) {
 									Részletek
 								</a>
 							</div>
-
+						<div>
 							<div class="block2-txt flex-w flex-t p-t-14">
 								<div class="block2-txt-child1 flex-col-l ">
 									<a href="/item?id=<?php echo $relatedRow->id; ?>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
@@ -468,17 +472,17 @@ if (mysqli_num_rows($relatedRes)) {
 									<span class="stext-105 cl3">
 									<ins><?php echo $price; ?></ins> &nbsp; &nbsp;  <del><?php echo $origPrice; ?></del>
 									</span>
-									<span class="fs-18 cl11">
+									<span class="fs-18 cl11 float-l">
 									<?php 
-									 				if ((int)$relatedRow->countOfRatings > 0) {
-                                                    $csillag = 0;
+													if ((int)$relatedRow->countOfRatings > 0) {
+													$csillag = 0;
 													for ($i = 0; $i < round($relatedRow->rating / $relatedRow->countOfRatings);$i++) {
-                                                        $csillag++;
+														$csillag++;
 														echo '<i class="zmdi zmdi-star p-r-2"></i>';
 													}
-                                                    for ($i = 0; $i < 5 - $csillag; $i++) {
-                                                        echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
-                                                    }
+													for ($i = 0; $i < 5 - $csillag; $i++) {
+														echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
+													}
 												} else {
 													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
 													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';

@@ -3,7 +3,6 @@
     "use strict";
 
         $(document).ready(function () {
-
             var selector_map = $('#google_map');
             var img_pin = selector_map.attr('data-pin');
             var data_map_x = selector_map.attr('data-map-x');
@@ -11,7 +10,6 @@
             var scrollwhell = selector_map.attr('data-scrollwhell');
             var draggable = selector_map.attr('data-draggable');
             var map_zoom = selector_map.attr('data-zoom');
-
             if (img_pin == null) {
                 img_pin = 'images/icons/location.png';
             }
