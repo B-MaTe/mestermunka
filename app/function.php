@@ -65,19 +65,46 @@
     
     }
 
-    function getRealColor($color) {
-        $colorArray = [
-            'pink' => 'Rózsaszín',
-            'brown' => 'Barna',
-            'black' => 'Fekete',
-            'white' => 'Fehér',
-            'yellow' => 'Sárga',
-            'grey' => 'Szürke',
-            'red' => 'Piros',
-            'blue' => 'Kék',
-            'green' => 'Zöld',
-            'orange' => 'Narancssárga',
+    function getRealColor($color, $fromEnglishToHungarian = true) {
+        $english = [
+            'pink', 
+            'brown', 
+            'black', 
+            'white', 
+            'yellow', 
+            'grey', 
+            'gray', 
+            'red', 
+            'blue',
+            'green', 
+            'orange',
         ];
-    return $colorArray[$color];
+        $hungarian = [
+            'Rózsaszín',
+            'Barna',
+            'Fekete',
+            'Fehér',
+            'Sárga',
+            'Szürke',
+            'Szürke',
+            'Piros',
+            'Kék',
+            'Zöld',
+            'Narancssárga',
+        ];
+        if ($fromEnglishToHungarian === true) {
+            if (in_array($color, $english)) {
+            
+                $returnVal = str_replace($english,$hungarian,$color);
+                return htmlentities($returnVal, ENT_QUOTES, "UTF-8");
+            } 
+        } else {
+            if (in_array($color, $hungarian)) {
+            
+                $returnVal = str_replace($hungarian,$english,$color);
+                return htmlentities($returnVal, ENT_QUOTES, "UTF-8");
+            } 
+        }
+        
 }
 

@@ -241,7 +241,7 @@ if (mysqli_num_rows($bestSellerRes)) {
 
 $saleRes = DBproduct($link);
 if (mysqli_num_rows($saleRes)) {
-	$saleCounter = 10;
+	$saleCounter = 5;
 	while ($saleRow = mysqli_fetch_object($saleRes)) {
 		if ((int)$saleRow->discount && ($saleRow->discountTime == 0 || $saleRow->discountTime >= date("Y-m-d"))) {
 			$price = webshopNumberFormat($saleRow->discount) . " FT.-";

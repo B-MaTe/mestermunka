@@ -29,18 +29,24 @@ if (isset($_SESSION['loginSucces'])) {
                       </script>";
                   
                   }
-                } 
+                }
               }
-            } if ($_SESSION['loginSucces'] === false) {
-              echo "Helytelen Adatok!";
-            }
+              if (!isset($_SESSION['loginSucces'])) {
+                echo "<script>
+                      alert('Helytelen Adatok!');
+                      </script>";	
+              }
+            } 
           } else {
-                echo "No blank places allowed!";
+            // Allitolag ide nem juthat el a kod, csak biztonsagbol.
+                echo "<script>
+                    alert('Minden mezőt kikell tölteni!');
+                    </script>";
           } 
     }
   
       
-  //$_SESSION['loginSucces'] = false;
+
   ?>
       <div class="container-input">
         <div class="col-lg-10 col-xl-9 mx-auto">

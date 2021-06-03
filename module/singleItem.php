@@ -245,12 +245,14 @@ if (mysqli_num_rows($cartRes)) {
 				$productQuantity = $_POST['num-product'];
 				$userID = $_SESSION["userID"];
 				$_SESSION['cartNum'] += intval($_POST['num-product']);
+				$colorPostTranslated = getRealColor($colorPost, $fromEnglishToHungarian = false);
 				$sql = "INSERT INTO cart (productID, userID, name, sku, price, color, size, quantity)
-				VALUES ('$singleItemID' , '$userID', '$name', '$sku', '$DBprice', '$colorPost', '$sizePost', '$productQuantity')";
+				VALUES ('$singleItemID' , '$userID', '$name', '$sku', '$DBprice', '$colorPostTranslated', '$sizePost', '$productQuantity')";
 				mysqli_query($link, $sql);
 			} else {
 				if (isset($_POST['num-product'])) {
 					$productQuantity += $_POST['num-product'];
+					
 					$sql = "UPDATE cart SET quantity = $productQuantity WHERE productID = ($singleItemID) AND color = '$colorPost' AND size = '$sizePost'";
 					mysqli_query($link, $sql);
 				}
@@ -462,9 +464,8 @@ if (mysqli_num_rows($relatedRes)) {
 									Részletek
 								</a>
 							</div>
-						<div>
 							<div class="block2-txt flex-w flex-t p-t-14">
-								<div class="block2-txt-child1 flex-col-l ">
+								<div class="block2-txt-child1 flex-col-l">
 									<a href="/item?id=<?php echo $relatedRow->id; ?>" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 									<?php echo $relatedRow->name; ?>
 									</a>
@@ -472,7 +473,7 @@ if (mysqli_num_rows($relatedRes)) {
 									<span class="stext-105 cl3">
 									<ins><?php echo $price; ?></ins> &nbsp; &nbsp;  <del><?php echo $origPrice; ?></del>
 									</span>
-									<span class="fs-18 cl11 float-l">
+									<span class="fs-18 cl11">
 									<?php 
 													if ((int)$relatedRow->countOfRatings > 0) {
 													$csillag = 0;

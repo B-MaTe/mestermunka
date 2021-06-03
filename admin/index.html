@@ -384,9 +384,9 @@
                         url: 'tableSave.php',
                         data: this.toFormData(this.productData),
                     }).then(function(response) {
-                            if (response.data.res == 'ok') {
-                                this.product[index] = response.data.row;
+                            if (response.data.res || response.data.row) {
                                 this.editRow = -1;
+                                this.product[index] = response.data.row;
                             }
                         }.bind(this).bind(index));
                 },
@@ -410,8 +410,7 @@
                             id: id,
                         }),
                     }).then(function(response) {
-                            console.log(response);
-                            if (response.data.res == 'ok') {
+                            if (response.data.res || response.data.row) {
                                 this.product.splice(index, 1);
                             }
                         }.bind(this).bind(index));
@@ -430,22 +429,11 @@
                         }),
                     }).then(function(response) {
                             console.log(response);
-                            if (response.data.res == 'ok') {
+                            if (response.data.res || response.data.row) {
                             }
                         }.bind(this).bind(index));
                 },
 
-                updatePicName(id, name) {
-                    axios({
-                        method: 'POST',
-                        url: 'updatePics.php',
-                        data: this.toFormData({
-                            id: id,
-                            name: name,
-                            oldname: oldname,
-                        }),
-                    })
-                },
 
                 toFormData: function(obj) {
                     let formData = new FormData();

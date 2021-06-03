@@ -25,19 +25,26 @@ if (isset($_POST['registerButton'])) {
     $res_u = mysqli_query($link, $sql_u);
   	$res_e = mysqli_query($link, $sql_e);
       if (mysqli_num_rows($res_u) > 0) {
-        echo "Felhasználónév foglalt!"; 	
+        echo "<script>
+              alert('Felhasználónév foglalt!');
+              </script>";
       }else if (mysqli_num_rows($res_e) > 0) {
-        echo "E-Mail foglalt!"; 	
+        echo "<script>
+              alert('E-Mail foglalt!');
+              </script>";	
       } else{
           $sql = "INSERT INTO login (userID, username, surname, firstname, email, password, postcode, country, county, city, streetHouseNumber, optional) 
       	    VALUES ('$id','$username','$surname','$firstname', '$email', '$hashedPassword', '$postcode', '$country', '$county', '$city', '$streetHouseNumber', '$optional')";
           $results = mysqli_query($link, $sql);
-          echo "<script>";
-          echo "document.location.replace('/bejelentkezes');";
-          echo "</script>";
+          echo "<script>
+                alert('Sikeres Regisztráció!');
+                document.location.replace('/bejelentkezes');
+                </script>";
   	}
   } else {
-    echo "Jelszavak nem egyeznek";
+    echo "<script>
+          alert('Jelszavak nem egyeznek!');
+          </script>";	
   }
 
 } 

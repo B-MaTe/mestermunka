@@ -41,7 +41,7 @@
     function renderMenu($location) {
         global $menu;
         global $module;
-
+        
         if (isset($menu[$location])) {
             foreach($menu[$location] as $menuItem) {
 
@@ -58,37 +58,34 @@
                 if (!isset($_GET['q'])) {
                     $_GET['q'] = '';
                 }
-                $style = "";
+                $class = "";
                 
                 if (isset($_SESSION['loginSucces'])) {
+                    $username = $_SESSION['username'];
                     if ($ID === 8) {
-                        if ($location === "main" && (int)$_COOKIE['sw'] > 991) {
-                        $style = "padding-left:30px;border-left: 1px solid #b2b2b2;";
-                        } else {
-                            $style = "";
+                        $class = "feketeVonal";
                         }
-                    } else if ($ID === 10) {
+                     else if ($ID === 10) {
                         continue;
+                    } else {
+                        $class = "";
                     }
                 } else if (!isset($_SESSION['loginSucces'])) {
                     if ($ID === 10) {
-                        if ($location === "main" && (int)$_COOKIE['sw'] > 991) {
-                            $style = "padding-left:30px;border-left: 1px solid #b2b2b2;";
-                        } else {
-                            $style = "";
-                        }
-                       
+                        $class = "feketeVonal";
                     } else if ($ID === 8) {
                         continue;
                     } else if ($ID === 12) {
                         continue;
                     } else if ($ID === 14) {
                         continue;
+                    } else {
+                        $class = "";
                     }
                 }
                 
     
-                echo '<li '. (($_GET['q'] == $menuItem->url) ? 'class="active" style="' . $style . '"'  : 'style="' . $style . '"') .'><a href="'. $url .'"'. $target .'>'. $menuItem->title .'</a></li>';
+                echo '<li '. (($_GET['q'] == $menuItem->url) ? 'class="active ' . $class . '"' : 'class="' . $class . '"') .'><a href="'. $url .'"'. $target .'>'. (($menuItem->title == "Profil") ? $username : $menuItem->title) .'</a></li>';
             }
         }
 

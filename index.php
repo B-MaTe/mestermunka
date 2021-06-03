@@ -81,7 +81,7 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="css/profile.css">
 <!--===============================================================================================-->
 </head>
-<body class="animsition" onresize="setScreenHWCookie()">
+<body class="animsition">
 <?php
 
 
@@ -116,13 +116,6 @@ function logoutFunction(){
 	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
 	<script src="vendor/select2/select2.min.js"></script>
-	<script type=text/javascript>
-            function setScreenHWCookie() {
-                Cookies.set('sw',document.documentElement.clientWidth);
-                Cookies.set('sh',document.documentElement.clientHeight);
-                return true;
-            }
-    </script>
 	<script>
 		$(".js-select2").each(function(){
 			$(this).select2({

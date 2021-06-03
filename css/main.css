@@ -592,6 +592,11 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   .wrap-search-header {
     height: 90px;
   }
+
+  .feketeVonal {
+    border-left: none;
+    padding-left: 0px;
+  }
 }
 
 @media (max-width: 575px) {
@@ -805,6 +810,14 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 @media (min-width: 992px){
   .menu-mobile {
     display: none;
+  }
+
+  .feketeVonal {
+    border-left: 1px solid #b2b2b2;
+  }
+
+  .feketeVonal a {
+    margin-left: 30px;
   }
 }
 

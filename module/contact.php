@@ -43,6 +43,7 @@
 							</span>
 
 							<p class="stext-115 cl1 size-213 p-t-18">
+								Store Of MaTe Kft.<br />
 								Magyarország Hódmezővásárhely, 6800 <br />Halász utca 10.
 							</p>
 						</div>
