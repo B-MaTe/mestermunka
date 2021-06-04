@@ -108,7 +108,7 @@ if (mysqli_num_rows($res)) {
                                                                                      border-radius:5px;
                                                                                      font-weight:100;
                                                                                      font-family: Poppins-Regular;
-                                                                                    '>&nbspRaktáron&nbsp
+                                                                                    '>&nbsp&nbspRaktáron&nbsp&nbsp
                                                                         </div>" 
                                                                         : 
                                                                         "<div style='color:white;
@@ -116,7 +116,7 @@ if (mysqli_num_rows($res)) {
                                                                                      border-radius:5px;
                                                                                      font-weight:100;
                                                                                      font-family: Poppins-Regular;
-                                                                                     '>&nbspNincs Raktáron&nbsp</div>";  ?>
+                                                                                     '>&nbsp&nbspNincs Raktáron&nbsp&nbsp</div>";  ?>
 
                                 </div>
                             </div>

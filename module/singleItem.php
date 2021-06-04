@@ -276,12 +276,30 @@ if (mysqli_num_rows($cartRes)) {
 							<a class="nav-link active" data-toggle="tab" href="#description" role="tab">Leírás</a>
 						</li>
 						<li class="nav-item p-b-10">
+							<a class="nav-link" data-toggle="tab" href="#sizetable" role="tab">Mérettáblázat</a>
+						</li>
+						<li class="nav-item p-b-10">
 							<a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Értékelés</a>
 						</li>
 					</ul>
 
 					<!-- Tab panes -->
 					<div class="tab-content p-t-43">
+						<div class="tab-pane fade" id="sizetable" role="tabpanel">
+								<div class="how-pos2 p-lr-15-md">
+									<?php
+									
+									echo "<img align='middle' src='../images/sizetable/" . $category . ".jpg' 
+									style='	width:70%;
+											display: block;
+											margin-left: auto;
+											margin-right: auto;
+											'>";
+									
+									?>
+								</div>
+							</div>
+
 						<!-- - -->
 						<div class="tab-pane fade show active" id="description" role="tabpanel">
 							<div class="how-pos2 p-lr-15-md">

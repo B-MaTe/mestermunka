@@ -16,7 +16,6 @@ if (isset($_SESSION['loginSucces'])) {
               while ($loginRow = mysqli_fetch_object($loginRes)) {
                 if ($loginRow->username == $nameEmail || $loginRow->email == $nameEmail) {
                   if (password_verify($password, $loginRow->password)) {
-                    echo "Sikeres Bejelentkezes";
                     $_SESSION['userID'] = $loginRow->userID;
                     $_SESSION['username'] = $loginRow->username;
                     $_SESSION['loginSucces'] = true;
