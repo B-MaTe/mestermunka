@@ -78,6 +78,7 @@
             'blue',
             'green', 
             'orange',
+            'silver',
         ];
         $hungarian = [
             'Rózsaszín',
@@ -91,6 +92,7 @@
             'Kék',
             'Zöld',
             'Narancssárga',
+            'Ezüst',
         ];
         if ($fromEnglishToHungarian === true) {
             if (in_array($color, $english)) {
