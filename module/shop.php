@@ -134,8 +134,8 @@ if (mysqli_num_rows($lowestRes)) {
     <div class="wrapperPrice">
         <fieldset class="filter-price">
             <div class="price-field">
-                <input type="range" name="price" min="<?php echo $lowestPrice; ?>" max="<?php echo $highestPrice; ?>" value="<?php echo $lowestPrice; ?>" step="500" id="lower">
-                <input type="range" name="price" min="<?php echo $lowestPrice; ?>" max="<?php echo $highestPrice; ?>" value="<?php echo $highestPrice; ?>" step="500" id="upper">
+                <input type="range" name="price" min="<?php echo $lowestPrice; ?>" max="<?php echo $highestPrice; ?>" value="<?php echo $lowestPrice; ?>" step="1000" id="lower">
+                <input type="range" name="price" min="<?php echo $lowestPrice; ?>" max="<?php echo $highestPrice; ?>" value="<?php echo $highestPrice; ?>" step="1000" id="upper">
             </div>
             <div class="price-wrap">
                 <div class="price-container">
