@@ -219,6 +219,22 @@ if (mysqli_num_rows($bestSellerRes)) {
 													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
 												}
 													?>
+													<?php echo ((int)$bestSellerRow->stock > 0) ? "<div style='color:white;
+                                                                                     background-color:green;
+                                                                                     border-radius:5px;
+                                                                                     font-weight:100;
+                                                                                     font-family: Poppins-Regular;
+                                                                                    '>&nbsp&nbspRaktáron&nbsp&nbsp
+                                                                        </div>" 
+                                                                        : 
+                                                                        "<div style='color:white;
+                                                                                     background-color:red;
+                                                                                     border-radius:5px;
+                                                                                     font-weight:100;
+                                                                                     font-family: Poppins-Regular;
+                                                                                     '>&nbsp&nbspNincs Raktáron&nbsp&nbsp</div>";  
+                                    ?>
+
 												</span>
 											</div>
 										</div>
@@ -292,6 +308,22 @@ if (mysqli_num_rows($saleRes)) {
 													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
 												}
 													?>
+													<?php echo ((int)$saleRow->stock > 0) ? "<div style='color:white;
+                                                                                     background-color:green;
+                                                                                     border-radius:5px;
+                                                                                     font-weight:100;
+                                                                                     font-family: Poppins-Regular;
+                                                                                    '>&nbsp&nbspRaktáron&nbsp&nbsp
+                                                                        </div>" 
+                                                                        : 
+                                                                        "<div style='color:white;
+                                                                                     background-color:red;
+                                                                                     border-radius:5px;
+                                                                                     font-weight:100;
+                                                                                     font-family: Poppins-Regular;
+                                                                                     '>&nbsp&nbspNincs Raktáron&nbsp&nbsp</div>";  
+                                    ?>
+
 												</span>
 											</div>
 										</div>
@@ -366,6 +398,22 @@ if (mysqli_num_rows($saleRes)) {
 													echo  '<i class="item-rating zmdi zmdi-star-outline p-r-2"></i>';
 												}
 													?>
+													<?php echo ((int)$ratingRow->stock > 0) ? "<div style='color:white;
+                                                                                     background-color:green;
+                                                                                     border-radius:5px;
+                                                                                     font-weight:100;
+                                                                                     font-family: Poppins-Regular;
+                                                                                    '>&nbsp&nbspRaktáron&nbsp&nbsp
+                                                                        </div>" 
+                                                                        : 
+                                                                        "<div style='color:white;
+                                                                                     background-color:red;
+                                                                                     border-radius:5px;
+                                                                                     font-weight:100;
+                                                                                     font-family: Poppins-Regular;
+                                                                                     '>&nbsp&nbspNincs Raktáron&nbsp&nbsp</div>";  
+                                    ?>
+
 												</span>
 											</div>
 										</div>

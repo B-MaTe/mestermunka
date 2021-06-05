@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 05, 2021 at 01:41 AM
+-- Generation Time: Jun 05, 2021 at 11:11 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.32
 
@@ -62,7 +62,7 @@ CREATE TABLE `counter` (
 --
 
 INSERT INTO `counter` (`counter`) VALUES
-(15);
+(16);
 
 -- --------------------------------------------------------
 
@@ -162,7 +162,7 @@ INSERT INTO `product` (`id`, `name`, `sku`, `price`, `category`, `color`, `size`
 (1, 'Calvin Klein fehér nôi póló', 'calvin-klein-feher-noi-polo', 25000, 'women', 'white,blue,black', 'm,s,l,xxl', 17000, '2021-02-12', 'Sed molestie mi diam, id dapibus tellus dictum non. Phasellus ut rutrum elit, et sodales tellus. Phasellus aliquet erat libero, at condimentum turpis molestie eu. Mauris ut dapibus purus, quis aliquam purus. Ut a lorem at risus varius fermentum. Morbi mollis purus a elit pulvinar, sit amet lacinia orci consectetur. Pellentesque ullamcorper luctus justo, feugiat aliquet odio placerat ut. Curabitur quis finibus nibh. Suspendisse potenti.', b'1', '5', 5, 7, 7, 2),
 (2, 'Fehér ing', 'feher-ing', 50000, 'women', 'white,red', 's,m,l', 0, '0000-00-00', 'Maecenas ultrices tellus orci, id viverra sapien egestas maximus. Pellentesque auctor non elit a pharetra. Praesent in facilisis purus, sit amet feugiat ex. Suspendisse bibendum leo sit amet dui auctor, vitae vulputate magna mollis. Integer sed auctor felis, vitae semper eros. Cras et justo ut erat sagittis interdum. Nulla sed interdum leo. Quisque eget accumsan massa, sed elementum massa. Integer mollis enim nulla, et faucibus justo lacinia non.', b'1', '3', 10, 23, 9, 5),
 (3, 'Kék kockás ing', 'kek-kockas-ing', 50000, 'man', 'blue,yellow,orange', 'l,xxl', 0, '0000-00-00', 'Nagyon szep kek ing', b'1', '3', 127, 241, 9, 2),
-(4, 'Vintage Inspired Classic', 'vintage-inspired-classic', 150000, 'watches', 'black,grey', 'xs,s,m,l,xl,xxl', 120000, '2021-01-30', 'Suspendisse erat mi, eleifend eget accumsan at, efficitur quis velit. Sed mollis dui dolor, eget euismod nulla imperdiet et. Donec vulputate urna eget dignissim accumsan. Nunc porttitor neque id dignissim cursus. In hac habitasse platea dictumst. Phasellus at placerat erat. Nulla tempor tortor lacus, et molestie mi luctus ut. Mauris id odio in massa rutrum tempus quis non purus. Mauris accumsan convallis tortor non dictum. Fusce varius nulla at est finibus, sit amet sollicitudin lorem dapibus. Phasellus ut tempor dui, eget vehicula velit. Morbi nulla diam, sagittis congue metus a, accumsan ultrices orci.', b'1', '2', 15, -2, 14, 6),
+(4, 'Vintage Inspired Classic', 'vintage-inspired-classic', 150000, 'watches', 'black,grey', 'xs,s,m,l,xl,xxl', 120000, '2021-01-30', 'Suspendisse erat mi, eleifend eget accumsan at, efficitur quis velit. Sed mollis dui dolor, eget euismod nulla imperdiet et. Donec vulputate urna eget dignissim accumsan. Nunc porttitor neque id dignissim cursus. In hac habitasse platea dictumst. Phasellus at placerat erat. Nulla tempor tortor lacus, et molestie mi luctus ut. Mauris id odio in massa rutrum tempus quis non purus. Mauris accumsan convallis tortor non dictum. Fusce varius nulla at est finibus, sit amet sollicitudin lorem dapibus. Phasellus ut tempor dui, eget vehicula velit. Morbi nulla diam, sagittis congue metus a, accumsan ultrices orci.', b'1', '2', 16, -3, 14, 6),
 (5, 'Marvel póló', 'marvel-polo', 6500, 'women', 'black', 'm,l,xl,xxl', 0, '0000-00-00', '', b'1', '4', 16, 14, 9, 2),
 (6, 'Elsőzsebes Pullover', 'elsozsebes-pullover', 14000, 'women', 'yellow', 'xxs,l', 0, '0000-00-00', 'Kerlek vedd meg, csorok vagyunk', b'1', '4', 4, 21, 10, 2),
 (7, 'Kék stretch női farmer', 'kek-stretch-noi-farmer', 40000, 'women', 'blue', 'm,l', 37000, '2021-02-22', 'Fason relaxed. - Szűkített nadrágszár. - Cipzározható zsebek. - Hátsó zsebbel. - Magasított derék. - Zárás gombbal és cipzárral. - Dekoratív rojtok. - Dekoratív koptatás. - Derék szélesség: 35 cm. - Csípő szélessége: 45 cm. - Derék magassága: 28,5 cm. - Nadrágszár szélessége alul: 15,5 cm. - Nadrágszár szélessége: 23,5 cm. - Szárhossz: 63 cm. - Hosszúság: 92 cm. - Megadott méret: S.  Összetétel: 100% pamut', b'1', '3', 2, 10, 10, 6),
@@ -191,7 +191,8 @@ INSERT INTO `product` (`id`, `name`, `sku`, `price`, `category`, `color`, `size`
 (42, 'Karóra MICHAEL KORS Slim Runway MK8507 Black-Black', 'karora-michael-kors-slim-runway-mk8507-black-black', 150000, 'watches', 'grey', 's,m,xl', 0, '0000-00-00', 'Gyártó: Michael Kors Model: Slim Runway MK8507 Szín: Fekete Szíj anyaga: Acél Tok anyaga: Acél Szerkezet: Kvarc Vízállóság: 5 ATM Üveg: Kristályüveg Tok mérete: 4,4 cm', b'1', '4', 0, 10, 0, 0),
 (43, 'BOSS CLASSIC JACKSON férfi karóra', 'boss-classic-jackson-ferfi-karora', 135000, 'watches', 'brown', 's,m,l,xl', 123000, '2021-12-31', 'Nem: Férfi 	Szerkezet: Quartz 	Tok: Nemesacél 	Óraüveg: Mineral (ásványi kristályüveg) 	Vízállóság: 3ATM-ig (cseppálló) 	Szíj: Bőr', b'1', '4', 0, 15, 0, 0),
 (44, 'NIKE Y ELMNTL BACKPACK - SWOOSH GFX', 'nike-y-elmntl-backpack---swoosh-gfx', 9999, 'bags', 'black', 's,m,l', 0, '0000-00-00', 'Összetétel - 100% Poliészter - rendkívül szilárd, szintetikus anyag, amely kiemelkedő hőtűrő és szagmegkötő képességgel rendelkezik. Kezelési útmutató - Kézi mosás Zsebek - Cipzáras zseb Részletek - Minta az elülső oldalon Külső zsebek - 2 Fogantyú - Igen Méret - 39 x 27 x 12 cm', b'1', '4', 0, 100, 0, 0),
-(45, 'Johhny Urban hátizsák', 'johhny-urban-hatizsak', 19000, 'bags', 'black', 'm,xl,xxl', 0, '0000-00-00', 'Tágas főrekesz Külső cipzár Tépőzár Állítható szíj Textil Cipzár Címkedarab/címkezászló Lágy fogantyú', b'1', '3', 0, 250, 0, 0);
+(45, 'Johhny Urban hátizsák', 'johhny-urban-hatizsak', 19000, 'bags', 'black', 'm,xl,xxl', 0, '0000-00-00', 'Tágas főrekesz Külső cipzár Tépőzár Állítható szíj Textil Cipzár Címkedarab/címkezászló Lágy fogantyú', b'1', '3', 0, 250, 0, 0),
+(46, 'Cipő VIBRAM FIVEFINGERS', 'cipo-vibram-fivefingers', 52000, 'shoes', 'black', '39,40,42,44,45', 50000, '2022-01-01', 'Gyártó: Vibram Fivefingers Model: V-Trek 18W7401 Sportcipők: Szabadidőcipő Karakterisztika: Alacsony túracipők különböző terepű túraösvényekhez tervezve. Szín: Fekete Felsőrész anyaga: Anyag - Anyag Belső rész: Anyag Betét: Anyag Kivehető betét: Nem Talp: Kiváló minőségű anyag Egyebek: szövetfűzők', b'1', '5', 0, 100, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -266,7 +267,7 @@ ALTER TABLE `review`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=192;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193;
 
 --
 -- AUTO_INCREMENT for table `login`
@@ -284,7 +285,7 @@ ALTER TABLE `menu`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `review`
